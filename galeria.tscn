@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://btpdfs2djop5n"]
+
+[ext_resource type="Shader" uid="uid://dham037d0qpmr" path="res://galeria.gdshader" id="1_5iac8"]
+[ext_resource type="Texture2D" uid="uid://criqthydrqgiu" path="res://cuadro1.jpeg" id="2_wen6x"]
+[ext_resource type="Script" uid="uid://b1t6rcfyv8ek4" path="res://painting_controller.gd" id="3_wen6x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5iac8"]
+shader = ExtResource("1_5iac8")
+shader_parameter/pixel_size = 14.0
+
+[node name="Galeria" type="Node2D" unique_id=1882032022]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1734301281]
+texture_filter = 1
+material = SubResource("ShaderMaterial_5iac8")
+position = Vector2(572, 323.5)
+scale = Vector2(1.5167785, 1.4295303)
+texture = ExtResource("2_wen6x")
+script = ExtResource("3_wen6x")

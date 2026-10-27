@@ -1,0 +1,10 @@
+# Cache local de Godot 4 (se re-genera automáticamente al abrir el proyecto)
+.godot/
+
+# Archivos temporales e importaciones locales del editor
+*.tmp
+*.translation
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db

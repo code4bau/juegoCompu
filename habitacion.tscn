@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://lhljrtng16un"]
+
+[ext_resource type="PackedScene" uid="uid://nlqfv0rvhfpr" path="res://habitacion.glb" id="1_getef"]
+[ext_resource type="Script" uid="uid://xw58xbvol3yx" path="res://habitacion.gd" id="2_ej61l"]
+[ext_resource type="Texture2D" uid="uid://ca2hww5kjt8t" path="res://texturaMadera.jpg" id="3_3itml"]
+[ext_resource type="Texture2D" uid="uid://criqthydrqgiu" path="res://cuadro1.jpeg" id="4_tegaa"]
+[ext_resource type="Shader" uid="uid://c1k661orh7f0u" path="res://pixelate_screen.gdshader" id="5_ci8bm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci8bm"]
+albedo_texture = ExtResource("3_3itml")
+uv1_scale = Vector3(16, 16, 16)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej61l"]
+albedo_texture = ExtResource("4_tegaa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gyek"]
+shader = ExtResource("5_ci8bm")
+shader_parameter/pixel_size = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_x38pt"]
+size = Vector3(2, 2, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d1uj"]
+albedo_texture = ExtResource("4_tegaa")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ecxis"]
+albedo_color = Color(0.18963063, 0.16434196, 0.08610792, 1)
+albedo_texture = ExtResource("3_3itml")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_2gyek"]
+size = Vector3(2.1, 2.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gyek"]
+albedo_texture = ExtResource("4_tegaa")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_x38pt"]
+size = Vector2(2, 2)
+
+[node name="habitacion" unique_id=2039368789 instance=ExtResource("1_getef")]
+script = ExtResource("2_ej61l")
+
+[node name="Paredes" parent="." index="0" unique_id=721091133]
+material_override = SubResource("StandardMaterial3D_ci8bm")
+
+[node name="cuadro1" parent="." index="1" unique_id=1288087537]
+visible = false
+material_override = SubResource("StandardMaterial3D_ej61l")
+
+[node name="Camera3D" type="Camera3D" parent="." index="6" unique_id=669738866]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+current = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="7" unique_id=622755398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 0)
+omni_range = 10.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8" unique_id=1328259936]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" index="0" unique_id=1277041499]
+material = SubResource("ShaderMaterial_2gyek")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cuadro_3D" type="MeshInstance3D" parent="." index="9" unique_id=813912791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -1.98)
+visible = false
+mesh = SubResource("BoxMesh_x38pt")
+surface_material_override/0 = SubResource("StandardMaterial3D_4d1uj")
+
+[node name="Cuadro_Completo" type="Node3D" parent="." index="10" unique_id=892185488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -1.9)
+
+[node name="Marco_Madera" type="MeshInstance3D" parent="Cuadro_Completo" index="0" unique_id=961374401]
+material_override = SubResource("StandardMaterial3D_ecxis")
+mesh = SubResource("BoxMesh_2gyek")
+
+[node name="Lienzo_Pintura" type="MeshInstance3D" parent="Cuadro_Completo" index="1" unique_id=1629466219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.06)
+material_override = SubResource("StandardMaterial3D_2gyek")
+mesh = SubResource("QuadMesh_x38pt")
